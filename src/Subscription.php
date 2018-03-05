@@ -1,6 +1,6 @@
 <?php
 
-namespace Jurihub\CashierMultiplan;
+namespace Anecka\CashierMultiplan;
 
 use Carbon\Carbon;
 use LogicException;
@@ -446,7 +446,7 @@ class Subscription extends Model
      * Gets the item by name
      *
      * @param string $plan The plan's ID
-     * @return Jurihub\CashierMultiplan\SubscriptionItem|null
+     * @return Anecka\CashierMultiplan\SubscriptionItem|null
      */
     public function subscriptionItem($plan)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jurihub\CashierMultiplan\Http\Controllers;
+namespace Anecka\CashierMultiplan\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
@@ -58,7 +58,7 @@ class WebhookController extends Controller
      * Get the billable entity instance by Stripe ID.
      *
      * @param  string  $stripeId
-     * @return \Jurihub\CashierMultiplan\Billable
+     * @return \Anecka\CashierMultiplan\Billable
      */
     protected function getUserByStripeId($stripeId)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jurihub\CashierMultiplan;
+namespace Anecka\CashierMultiplan;
 
 use Exception;
 use Carbon\Carbon;
@@ -129,7 +129,7 @@ trait Billable
      *
      * @param  string  $subscription
      * @param  string  $plan
-     * @return \Jurihub\CashierMultiplan\SubscriptionBuilder
+     * @return \Anecka\CashierMultiplan\SubscriptionBuilder
      */
     public function newSubscription($subscription, $plan)
     {
@@ -205,14 +205,14 @@ trait Billable
      * Get a subscription instance by name.
      *
      * @param  string  $subscription
-     * @return \Jurihub\CashierMultiplan\Subscription|null
+     * @return \Anecka\CashierMultiplan\Subscription|null
      */
     public function subscription($subscription = 'default')
     {
         return $this->subscriptions->sortByDesc(function ($value) {
             return $value->created_at->getTimestamp();
         })
-        ->first(function ($value) use ($subscription) {
+        ->first(function ($k, $value) use ($subscription) {
             return $value->name === $subscription;
         });
     }
@@ -248,7 +248,7 @@ trait Billable
     /**
      * Get the entity's upcoming invoice.
      *
-     * @return \Jurihub\CashierMultiplan\Invoice|null
+     * @return \Anecka\CashierMultiplan\Invoice|null
      */
     public function upcomingInvoice()
     {
@@ -267,7 +267,7 @@ trait Billable
      * Find an invoice by ID.
      *
      * @param  string  $id
-     * @return \Jurihub\CashierMultiplan\Invoice|null
+     * @return \Anecka\CashierMultiplan\Invoice|null
      */
     public function findInvoice($id)
     {
@@ -282,7 +282,7 @@ trait Billable
      * Find an invoice or throw a 404 error.
      *
      * @param  string  $id
-     * @return \Jurihub\CashierMultiplan\Invoice
+     * @return \Anecka\CashierMultiplan\Invoice
      */
     public function findInvoiceOrFail($id)
     {
@@ -726,7 +726,7 @@ trait Billable
      *
      * @param  string  $subscription
      * @param  string  $plan
-     * @return \Jurihub\CashierMultiplan\SubscriptionBuilder
+     * @return \Anecka\CashierMultiplan\SubscriptionBuilder
      */
     public function newMultisubscription()
     {
@@ -745,7 +745,7 @@ trait Billable
      * Gets a subscription item instance by name.
      *
      * @param  string  $plan
-     * @return \Jurihub\CashierMultiplan\SubscriptionItem|null
+     * @return \Anecka\CashierMultiplan\SubscriptionItem|null
      */
     public function subscriptionItem($plan)
     {
@@ -759,7 +759,7 @@ trait Billable
      * @param string $plan The plan's ID
      * @param integer $quantity The plan's quantity
      * @param string $subscription The subscription's name
-     * @return \Jurihub\CashierMultiplan\Subscription
+     * @return \Anecka\CashierMultiplan\Subscription
      */
     public function addPlan($plan, $prorate = true, $quantity = 1, $subscription = 'default')
     {
@@ -776,7 +776,7 @@ trait Billable
      * Removes a plan from the model's subscription
      *
      * @param string $plan The plan's ID
-     * @return \Jurihub\CashierMultiplan\Subscription|null
+     * @return \Anecka\CashierMultiplan\Subscription|null
      */
     public function removePlan($plan, $prorate = true, $subscription = 'default')
     {
@@ -793,7 +793,7 @@ trait Billable
      * Gets the subscription that contains the given plan
      *
      * @param string $plan The plan's ID
-     * @return \Jurihub\CashierMultiplan\Subscription|null
+     * @return \Anecka\CashierMultiplan\Subscription|null
      */
     public function subscriptionByPlan($plan)
     {
