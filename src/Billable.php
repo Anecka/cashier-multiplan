@@ -224,7 +224,9 @@ trait Billable
      */
     public function subscriptions()
     {
-        return $this->hasMany(Subscription::class, $this->getForeignKey())->orderBy('created_at', 'desc');
+        $subscriptionClass = isset($this->subscriptionClass) ? $this->subscriptionClass : Subscription::class;
+
+        return $this->hasMany($subscriptionClass, $this->getForeignKey())->orderBy('created_at', 'desc');
     }
 
     /**
