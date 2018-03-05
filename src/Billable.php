@@ -192,11 +192,11 @@ trait Billable
             return true;
         }
 
-        $plan = $this->subscriptionItem($plan);
+        // $plan = $this->subscriptionItem($plan);
 
-        if (!is_null($plan) && $subscription->valid()) {
-            return true;
-        }
+        // if (!is_null($plan) && $subscription->valid()) {
+        //     return true;
+        // }
 
         return false;
     }
@@ -590,9 +590,9 @@ trait Billable
             if ($subscription->stripe_plan === $plan) {
                 return true;
             }
-            if ($subscription->hasItem($plan)) {
-                return true;
-            }
+            // if ($subscription->hasItem($plan)) {
+            //     return true;
+            // }
         }
 
         return false;
@@ -734,14 +734,20 @@ trait Billable
     }
 
     /**
+     * Anecka Note: We aren't using this feature.
+     * 
      * Get all the subscription items for the user
      */
     public function subscriptionItems()
     {
-        return $this->hasManyThrough(SubscriptionItem::class, Subscription::class)->orderBy('created_at', 'desc');
+        return collect([]);
+
+        // return $this->hasManyThrough(SubscriptionItem::class, Subscription::class)->orderBy('created_at', 'desc');
     }
 
     /**
+     * Anecka Note: We aren't using this feature.
+     * 
      * Gets a subscription item instance by name.
      *
      * @param  string  $plan
@@ -749,8 +755,10 @@ trait Billable
      */
     public function subscriptionItem($plan)
     {
-        $itemsTable = (new SubscriptionItem)->getTable();
-        return $this->subscriptionItems()->where($itemsTable.'.stripe_plan', $plan)->orderBy($itemsTable.'.created_at', 'desc')->first();
+        return null;
+
+        // $itemsTable = (new SubscriptionItem)->getTable();
+        // return $this->subscriptionItems()->where($itemsTable.'.stripe_plan', $plan)->orderBy($itemsTable.'.created_at', 'desc')->first();
     }
 
     /**
@@ -803,12 +811,19 @@ trait Billable
             return $subscription;
         }
 
-        $item = $this->subscriptionItem($plan);
+        return null;
 
-        if (is_null($item)) {
-            return null;
-        }
+        /**
+         * Anecka Note: We aren't using multi-plan on a single sub,
+         * so the below logic is not needed.
+         */
+        
+        // $item = $this->subscriptionItem($plan);
 
-        return $item->subscription;
+        // if (is_null($item)) {
+        //     return null;
+        // }
+
+        // return $item->subscription;
     }
 }
