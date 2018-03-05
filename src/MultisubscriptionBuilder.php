@@ -69,13 +69,13 @@ class MultisubscriptionBuilder extends SubscriptionBuilder
         ]);
         
         // registers the subscription's items
-        foreach ($stripeSubscription->items->data as $item) {
-            $subscription->subscriptionItems()->create([
-                'stripe_id' => $item['id'],
-                'stripe_plan' => $item['plan']['id'],
-                'quantity' => $item['quantity'],
-            ]);
-        }
+        // foreach ($stripeSubscription->items->data as $item) {
+        //     $subscription->subscriptionItems()->create([
+        //         'stripe_id' => $item['id'],
+        //         'stripe_plan' => $item['plan']['id'],
+        //         'quantity' => $item['quantity'],
+        //     ]);
+        // }
         
         return $subscription;
     }
