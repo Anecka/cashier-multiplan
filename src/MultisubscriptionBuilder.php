@@ -1,6 +1,6 @@
 <?php
 
-namespace Jurihub\CashierMultiplan;
+namespace Anecka\CashierMultiplan;
 
 use Carbon\Carbon;
 
@@ -44,7 +44,7 @@ class MultisubscriptionBuilder extends SubscriptionBuilder
      *
      * @param  string|null  $token
      * @param  array  $options
-     * @return \Jurihub\CashierMultiplan\Subscription
+     * @return \Anecka\CashierMultiplan\Subscription
      */
     public function create($token = null, array $options = [])
     {

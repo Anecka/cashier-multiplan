@@ -1,6 +1,6 @@
 <?php
 
-namespace Jurihub\CashierMultiplan;
+namespace Anecka\CashierMultiplan;
 
 use Exception;
 
